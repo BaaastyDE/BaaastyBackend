@@ -29,7 +29,7 @@ public class UserController {
     @GetMapping("/{uuid}")
     public ResponseEntity<?> getUser(@PathVariable UUID uuid) {
         try {
-            return ResponseEntity.ok(userService.getUserByUuid(uuid).orElseThrow(() -> new UserNotFoundException(uuid)));
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByUuid(uuid).orElseThrow(() -> new UserNotFoundException(uuid)));
         } catch (UserNotFoundException exception) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         }
