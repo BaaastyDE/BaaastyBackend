@@ -30,8 +30,8 @@ public class UserService {
     }
 
     @Cacheable(key = "#uuid")
-    public Optional<User> getUserByUuid(UUID uuid) {
-        return userRepository.findById(uuid);
+    public User getUserByUuid(UUID uuid) {
+        return userRepository.findById(uuid).orElseThrow(() -> new UserAlreadyExistsException(uuid));
     }
 
     @CachePut(key = "#user.uuid")
