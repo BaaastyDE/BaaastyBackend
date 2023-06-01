@@ -14,6 +14,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private Long discordId;
 
     public User() {
@@ -23,7 +24,7 @@ public class User {
     public User(UUID uuid, String name) {
         this.uuid = uuid;
         this.name = name;
-        this.discordId = null;
+        this.discordId = -1L;
     }
 
     public User(UUID uuid, String name, Long discordId) {

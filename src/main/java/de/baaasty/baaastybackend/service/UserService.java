@@ -31,7 +31,7 @@ public class UserService {
 
     @Cacheable(key = "#uuid")
     public User getUserByUuid(UUID uuid) {
-        return userRepository.findById(uuid).orElseThrow(() -> new UserAlreadyExistsException(uuid));
+        return userRepository.findById(uuid).orElseThrow(() -> new UserNotFoundException(uuid));
     }
 
     @CachePut(key = "#user.uuid")
@@ -42,10 +42,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    @CachePut(key = "#uuid")
-    public User updateUser(UUID uuid, User user) {
-        if (!userRepository.existsById(uuid))
-            throw new UserNotFoundException(uuid);
+    @CachePut(key = "#user")
+    public User updateUser(User user) {
+        if (!userRepository.existsById(user.getUuid()))
+            throw new UserNotFoundException(user.getUuid());
 
         return userRepository.save(user);
     }

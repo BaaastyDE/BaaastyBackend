@@ -44,10 +44,10 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{uuid}")
-    public ResponseEntity<?> updateUser(@PathVariable UUID uuid, @RequestBody User user) {
+    @PutMapping
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(uuid, user));
+            return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(user));
         } catch (UserNotFoundException exception) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         }
