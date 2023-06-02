@@ -36,9 +36,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@RequestBody User user) {
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
+            return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
         } catch (UserAlreadyExistsException exception) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
         }

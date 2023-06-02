@@ -1,6 +1,5 @@
 package de.baaasty.baaastybackend.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.baaasty.baaastybackend.entity.User;
 import de.baaasty.baaastybackend.repository.UserRepository;
 import de.baaasty.baaastybackend.exception.user.UserAlreadyExistsException;
@@ -12,7 +11,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,14 +33,14 @@ public class UserService {
     }
 
     @CachePut(key = "#user.uuid")
-    public User saveUser(User user) {
+    public User createUser(User user) {
         if (userRepository.existsById(user.getUuid()))
             throw new UserAlreadyExistsException(user.getUuid());
 
-        return userRepository.save(user);
+        return userRepository.save(new User(user.getUuid(), user.getName()));
     }
 
-    @CachePut(key = "#user")
+    @CachePut(key = "#user.uuid")
     public User updateUser(User user) {
         if (!userRepository.existsById(user.getUuid()))
             throw new UserNotFoundException(user.getUuid());
