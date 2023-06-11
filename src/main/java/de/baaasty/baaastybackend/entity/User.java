@@ -30,10 +30,4 @@ public class User {
         this.name = name;
         this.discordId = -1L;
     }
-
-    public User(UUID uuid, String name, Long discordId) {
-        this.uuid = uuid;
-        this.name = name;
-        this.discordId = discordId;
-    }
 }
