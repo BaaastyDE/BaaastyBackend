@@ -1,11 +1,15 @@
 package de.baaasty.baaastybackend.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "bb_user")
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -31,29 +35,5 @@ public class User {
         this.uuid = uuid;
         this.name = name;
         this.discordId = discordId;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getDiscordId() {
-        return discordId;
-    }
-
-    public void setDiscordId(Long discordID) {
-        this.discordId = discordID;
     }
 }
