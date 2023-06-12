@@ -1,0 +1,8 @@
+type User {
+    uuid: ID!
+    name: String!
+    discordId: String!
+    onlineTime: Int!
+    lastSeen: DateTime!
+    firstJoin: DateTime!
+}
