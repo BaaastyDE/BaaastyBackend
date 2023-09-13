@@ -1,12 +1,9 @@
-package de.baaasty.baaastybackend.repository;
+package de.baaasty.baaastybackend.user.repository;
 
-import de.baaasty.baaastybackend.entity.User;
+import de.baaasty.baaastybackend.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-
 }

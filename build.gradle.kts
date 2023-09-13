@@ -22,10 +22,10 @@ dependencies {
     //implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
     //implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly("org.postgresql:postgresql")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly ("org.mariadb.jdbc:mariadb-java-client")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 }
